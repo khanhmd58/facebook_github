@@ -1,0 +1,40 @@
+{
+  "name": "vntk",
+  "version": "0.9.4",
+  "description": "Vietnamese language toolkit",
+  "main": "index.js",
+  "bin": {
+    "vntk": "./bin/vntk.js"
+  },
+  "scripts": {
+    "test": "tape test/start.js | tap-spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Vunb/vntk.git"
+  },
+  "keywords": [
+    "vntk",
+    "vietnamese",
+    "toolkit",
+    "nlp"
+  ],
+  "author": "Vunb",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vunb/vntk/issues"
+  },
+  "homepage": "https://github.com/vunb/vntk",
+  "dependencies": {
+    "async": "2.0.1",
+    "bindings": "^1.2.1",
+    "commander": "2.9.0",
+    "dongdu": "0.9.x",
+    "lodash": "4.15.0"
+  },
+  "devDependencies": {
+    "nan": "^2.4.0",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.0"
+  }
+}
