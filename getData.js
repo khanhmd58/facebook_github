@@ -1,5 +1,5 @@
 var logger = require('morgan');
-var http = require('http');
+const http = require('http');
 var bodyParser = require('body-parser');
 var express = require('express');
 var FB = require('fb');
