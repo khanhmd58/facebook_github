@@ -58,3 +58,17 @@ cqlsh
 sudo npm install -g pm2
 pm2 start getData.js
 
+sudo pip install numpy
+sudo pip install scipy
+sudo pip install sklearn-crfsuite
+sudo pip install pyvi
+sudo pip install cassandra-driver // phai dung sudo
+
+phải ấn vào yêu cầu publish page mới xóa được
+
+
+tạo databases-keyspace: CREATE KEYSPACE getfb WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 3};
+tạo bảng: 
+CREATE TABLE getdata( id_comment text PRIMARY KEY , comment text );
+CREATE TABLE add_neg( negative_comment text PRIMARY KEY );
+

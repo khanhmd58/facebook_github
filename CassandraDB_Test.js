@@ -10,4 +10,5 @@ client.execute(query, function(err, result) {
   	console.log(data.id_comment);
   	console.log(data.comment);  
   }
+  process.exit(0);
 });

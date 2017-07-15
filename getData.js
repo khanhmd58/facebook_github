@@ -9,11 +9,10 @@ var request = require("request");
 var app = express();
 var server = http.createServer(app);
 const cassandra = require('cassandra-driver');
-const client = new cassandra.Client({ contactPoints: ['127.0.0.1:9042'], keyspace: 'test' });
+const client = new cassandra.Client({ contactPoints: ['127.0.0.1:9042'], keyspace: 'getfb' });
 app.use(logger('dev'));
 app.use(bodyParser.json());
 FB.options({version: 'v2.9'});
-FB.setAccessToken('EAACZBaYXWHJoBAITE0KB4iGhvT0nLBHsuJOXZCXMCLqLlu0S1wZBi1ZCovCRBTD2gKICsy0KnhkI3204lcWV5AJ5AhFNY0teKmrZB1Un9V6lFMZAEr3l89m4bqQZC41IrwlzYhgphjou7ieBy6LXyiqLG1XDnW9EEQZD');
 // Đây là đoạn code để tạo Webhook
 app.get('/', (req, res) => {
   res.send("Home page. Server running okay.");
@@ -35,7 +34,7 @@ app.post('/webhook', function(req, res) {
   			var message = data_core.message;
         if(commentID && message ){
             const params = [ commentID, message ];
-            const query = 'INSERT INTO tmp (id_comment,comment) VALUES (?, ?)';
+            const query = 'INSERT INTO getdata (id_comment,comment) VALUES (?, ?)';
             client.execute(query, params, { prepare: true });
             console.log(commentID);
         }
