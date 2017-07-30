@@ -70,5 +70,10 @@ phải ấn vào yêu cầu publish page mới xóa được
 tạo databases-keyspace: CREATE KEYSPACE getfb WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 3};
 tạo bảng: 
 CREATE TABLE getdata( id_comment text PRIMARY KEY , comment text );
-CREATE TABLE add_neg( negative_comment text PRIMARY KEY );
+sudo apt-get install python-virtualenv
+virtualenv facebookenv
+source facebookenv/bin/activate
+sudo pip install facebook-sdk
+
+
 

@@ -27,7 +27,7 @@ def computeIDF(docList):
                 
     #divide N by denominator above, take the log of that
     for word, val in idfDict.items():
-        idfDict[word]= math.log(N / float(val)) 
+        idfDict[word]= math.log(N /(1 + float(val))) 
 
     return idfDict
 

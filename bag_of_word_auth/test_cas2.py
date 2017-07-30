@@ -8,6 +8,8 @@ import json
 from cassandra.io.libevreactor import LibevConnection
 from cassandra.cluster import Cluster
 from cassandra.query import dict_factory
+import facebook
+import time
 
 #define function tf
 def computeTF(wordDict, bow):
@@ -93,19 +95,19 @@ def alt(array):
     obj1=open(path_neg,"r")
     str1 = obj1.read()
     files_neg = str1.split("\n\n")
-    print len(files_neg)
+   # print len(files_neg)
     obj1.close()
 
     path_pos = '/home/rindem/Desktop/bag_of_word_auth/training/positive'
     obj2=open(path_pos,"r")
     str2 = obj2.read()
     files_pos = str2.split("\n\n")
-    print len(files_pos)
+   # print len(files_pos)
     obj2.close()
     files.append(array)
     files.extend(files_neg)
     files.extend(files_pos)
-    print len(files)
+  #  print len(files)
 
 
     for value in range(len(files)):
@@ -161,11 +163,11 @@ def alt(array):
 
     for word,val in x_test.items():
         u_test.append(x_test[word])
-    print "\n"
-    print "Compare test vs neg: ", space(u_test,u_neg)
+   # print "\n"
+   # print "Compare test vs neg: ", space(u_test,u_neg)
     tmp = space(u_test,u_neg)
-    print "Compare test vs pos", space(u_test,u_pos)
-    print "\n"
+   # print "Compare test vs pos", space(u_test,u_pos)
+   # print "\n"
     temp = space(u_test,u_pos)
     if(compare(tmp,temp)==tmp):
         return 1
@@ -178,6 +180,7 @@ str3 = obj3.read()
 files_test = str3.split("\n\n")
 obj3.close()
 print files_test'''
+start_time = time.time()
 data_test = []
 data_dict = {}
 data_neg = []
@@ -198,21 +201,21 @@ count_neg = 0
 count_pos = 0
 if(data_test):
     for val in data_test:
-        print val
+       # print val
         if (alt(val)==1):
             data_neg.append(val)
             count_neg+=1
         else:
             count_pos+=1
-        print "////////"
+       # print "////////"
 
-if(count_pos & count_pos):
+'''if(count_pos & count_pos):
     print '\n'
     print "tổng giá trị positive:", count_pos, "\ttổng giá trị negative:", count_neg
     print'\n'
     print "tỉ lệ positive:",((count_pos)/float(count_pos+count_neg))*100," %\n"
     print "tỉ lệ negative:",((count_neg)/float(count_pos+count_neg))*100," %"
-
+'''
 
 for key,value in data_dict.items():
     for val in data_neg:
@@ -224,10 +227,14 @@ for key,value in data_dict.items():
 
 #query_truncate = "TRUNCATE TABLE add_neg"
 #session.execute(query_truncate)
+graph = facebook.GraphAPI(access_token='EAAUq7vkspMMBAKI2thvq7QVXsxNwleAfNvYT4S9bK1FLZArIDk1Kv507YhxYrNSfHKHqkwdfPCRUeqZCFmlmdj2dgYlFcPAD5gxWdIhiLT7s8UoutmPE8LjVZAyBTiqAVZBadzGfMcUPiEvqYx4TKg4WwU3UdWAbF5tTib0prwZDZD', version='2.7')
 
 for val in result:
-    z = val
-    query = "INSERT INTO add_neg (negative_comment) VALUES ('"+ val +"')"
-    session.execute(query)
-    query_del = "DELETE from getdata WHERE id_comment='"+ val + "'"
-    session.execute(query_del) 
+    x = graph.delete_object(id = val)
+    if(x!="None"):
+        print "done"
+    else:
+        print "error"
+
+end_time = time.time()
+print 'total run-time: %f ms' % ((end_time - start_time) * 1000)

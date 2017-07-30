@@ -4,7 +4,7 @@ var path = require('path');
 const cassandra = require('cassandra-driver');
 const client = new cassandra.Client({ contactPoints: ['127.0.0.1:9042'], keyspace: 'getfb' });
 FB.options({version: 'v2.9'});
-FB.setAccessToken('EAAYqwy2qDE4BAEv9eLznhgZAUTK5XQUmGWhmNhwsykscpzsU02YPaUNR1aPhLwMXqaAgHWywRIw1ioOxE6jD8AXmrZBLDgaJJodqQxbhiKlXK7v1lGLJACyZCGXE6ZCXwZAYspaA4YEjDlNjPFZA3FH32nfJjhS9RZC3ZAZBV7Nhid6gv9O86afUPGx2KSKmcUnMBiQEF6R71VgZDZD');
+FB.setAccessToken('EAAYqwy2qDE4BANmrMYuZAzKXwvBpQHA7mipMsMZCvgKMIpwUwZBpt59nMps2S90MHn8Ya1ICOsFkSaPWXC4gLt58w1f0jvS7lrDcGoezhe9W5GhH3MM86lMfmByQWHEKLZBbksfuMQVC81VmZAd6ZAd16yuHKZBC92GZANNDpV8dEP5RLaVzNWhI3vFd6ilM9QZAzZCwKnQ205QAZDZD');
 const query = 'SELECT negative_comment FROM add_neg ';
 client.execute(query, function(err, result) {
   var all_data = result.rows;

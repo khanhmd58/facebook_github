@@ -1,0 +1,13 @@
+bưới 1 : người muốn sử dụng service chia sẻ quyền biên tập trang với nhà phát triển ứng dụng RTMC
+bước 2: nhà phát triển sẽ cấu hình như sau
+- cấu hình ngrok nhận data như bình thường
+- vào api tiếp thị và vào phần app mình đã cài để sử dụng ứng với page đó
+- vào phần mã truy cập trang kéo xuống vào phần nhận mã truy cập trang và click vào trang mình cần cài đặt service
+- vào dấu i ở mã truy cập để lấy id truy cập trang.
+- gửi request POST với link như sau :/{page-id}/subscribed_apps 
+- khi thông báo success=true tức là thành công
+bước 3: cấu hình để nhận được access token không thời hạn
+- truy cập https://developers.facebook.com/tools/accesstoken/
+- click vào debug accesstoken trong phần User Token ứng với ứng dụng mà mình cài đặt và sau đó sẽ chuyển hướng đến trang trình gỡ lỗi mã truy cập
+ 
+
